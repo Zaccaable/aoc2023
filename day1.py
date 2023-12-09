@@ -25,22 +25,24 @@ def find_calibration_value(pattern: str, lines: list) -> int:
     calibration_values = []
     for line in lines:
         numbers = re.findall(pattern, line)
-        calibration_values.append(int(number_translation.get(
-            numbers[0])+number_translation.get((numbers[-1]))))
+        calibration_values.append(
+            int(
+                number_translation.get(numbers[0])
+                + number_translation.get((numbers[-1]))
+            )
+        )
     return sum(calibration_values)
 
 
-if __name__ == '__main__':
-
-    with open('day1_input.txt', 'r') as f:
+if __name__ == "__main__":
+    with open("day1_input.txt", "r") as f:
         content = f.read()
 
     lines = content.splitlines()
     value_part_1 = find_calibration_value("\d", lines)
-    print(
-        f'For part 1 the sum of all of the calibration values is: {value_part_1}')
+    print(f"For part 1 the sum of all of the calibration values is: {value_part_1}")
 
     value_part_2 = find_calibration_value(
-        r'(?=(\d|one|two|three|four|five|six|seven|eight|nine))', lines)
-    print(
-        f'For part 1 the sum of all of the calibration values is: {value_part_2}')
+        r"(?=(\d|one|two|three|four|five|six|seven|eight|nine))", lines
+    )
+    print(f"For part 1 the sum of all of the calibration values is: {value_part_2}")
